@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Stats - Unwrapped</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root">
+      <!-- Header -->
+      <header class="header">
+        <div class="container header-container">
+          <div class="logo">
+            <a href="index.html">
+              <span>Unwrapped</span>
+            </a>
+          </div>
+          <div class="header-buttons">
+            <button class="btn btn-ghost">Log In</button>
+            <button class="btn btn-primary">Connect Spotify</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <!-- Your Stats Section -->
+        <section id="your-stats" class="stats-section">
+          <div class="container">
+            <div class="stats-header">
+              <h1>Your <span class="accent">Listening Stats</span></h1>
+              <p>Based on your Spotify activity over the last 6 months</p>
+            </div>
+            
+            <div class="stats-grid">
+              <div class="stats-card">
+                <h3>Top Tracks</h3>
+                <div class="track-list">
+                  <div class="track-item">
+                    <div class="track-rank">1</div>
+                    <div class="track-info">
+                      <div class="track-name">Heat Waves</div>
+                      <div class="track-artist">Glass Animals</div>
+                    </div>
+                  </div>
+                  <div class="track-item">
+                    <div class="track-rank">2</div>
+                    <div class="track-info">
+                      <div class="track-name">As It Was</div>
+                      <div class="track-artist">Harry Styles</div>
+                    </div>
+                  </div>
+                  <div class="track-item">
+                    <div class="track-rank">3</div>
+                    <div class="track-info">
+                      <div class="track-name">Blinding Lights</div>
+                      <div class="track-artist">The Weeknd</div>
+                    </div>
+                  </div>
+                  <div class="track-item">
+                    <div class="track-rank">4</div>
+                    <div class="track-info">
+                      <div class="track-name">Starboy</div>
+                      <div class="track-artist">The Weeknd, Daft Punk</div>
+                    </div>
+                  </div>
+                  <div class="track-item">
+                    <div class="track-rank">5</div>
+                    <div class="track-info">
+                      <div class="track-name">Stay</div>
+                      <div class="track-artist">The Kid LAROI, Justin Bieber</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="stats-card">
+                <h3>Top Artists</h3>
+                <div class="artist-list">
+                  <div class="artist-item">
+                    <div class="artist-rank">1</div>
+                    <div class="artist-name">The Weeknd</div>
+                  </div>
+                  <div class="artist-item">
+                    <div class="artist-rank">2</div>
+                    <div class="artist-name">Drake</div>
+                  </div>
+                  <div class="artist-item">
+                    <div class="artist-rank">3</div>
+                    <div class="artist-name">Taylor Swift</div>
+                  </div>
+                  <div class="artist-item">
+                    <div class="artist-rank">4</div>
+                    <div class="artist-name">Billie Eilish</div>
+                  </div>
+                  <div class="artist-item">
+                    <div class="artist-rank">5</div>
+                    <div class="artist-name">Post Malone</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="stats-card">
+                <h3>Top Genres</h3>
+                <div class="genre-list">
+                  <div class="genre-item">
+                    <div class="genre-label">Pop</div>
+                    <div class="genre-bar">
+                      <div class="genre-fill" style="width: 85%"></div>
+                    </div>
+                  </div>
+                  <div class="genre-item">
+                    <div class="genre-label">Hip Hop</div>
+                    <div class="genre-bar">
+                      <div class="genre-fill" style="width: 67%"></div>
+                    </div>
+                  </div>
+                  <div class="genre-item">
+                    <div class="genre-label">R&B</div>
+                    <div class="genre-bar">
+                      <div class="genre-fill" style="width: 52%"></div>
+                    </div>
+                  </div>
+                  <div class="genre-item">
+                    <div class="genre-label">Indie</div>
+                    <div class="genre-bar">
+                      <div class="genre-fill" style="width: 43%"></div>
+                    </div>
+                  </div>
+                  <div class="genre-item">
+                    <div class="genre-label">Rock</div>
+                    <div class="genre-bar">
+                      <div class="genre-fill" style="width: 31%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-content">
+            <div class="logo">
+              <span>Unwrapped</span>
+            </div>
+            <p class="copyright">© <span id="current-year">2023</span> Unwrapped. Not affiliated with Spotify.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script>
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
