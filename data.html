@@ -17,10 +17,7 @@
               <span>Unwrapped</span>
             </a>
           </div>
-          <div class="header-buttons">
-            <button class="btn btn-ghost">Log In</button>
-            <button class="btn btn-primary">Connect Spotify</button>
-          </div>
+          <button id="connect-spotify-btn" class="btn btn-primary">Connect to Spotify</button>
         </div>
       </header>
 
@@ -39,37 +36,42 @@
                 <div class="track-list">
                   <div class="track-item">
                     <div class="track-rank">1</div>
+                    <div class="track-img"></div>
                     <div class="track-info">
-                      <div class="track-name">Heat Waves</div>
-                      <div class="track-artist">Glass Animals</div>
+                      <div class="track-name">Song</div>
+                      <div class="track-artist">Artist</div>
                     </div>
                   </div>
                   <div class="track-item">
                     <div class="track-rank">2</div>
+                    <div class="track-img"></div>
                     <div class="track-info">
-                      <div class="track-name">As It Was</div>
-                      <div class="track-artist">Harry Styles</div>
+                      <div class="track-name">Song</div>
+                      <div class="track-artist">Artist</div>
                     </div>
                   </div>
                   <div class="track-item">
                     <div class="track-rank">3</div>
+                    <div class="track-img"></div>
                     <div class="track-info">
-                      <div class="track-name">Blinding Lights</div>
-                      <div class="track-artist">The Weeknd</div>
+                      <div class="track-name">Song</div>
+                      <div class="track-artist">Artist</div>
                     </div>
                   </div>
                   <div class="track-item">
                     <div class="track-rank">4</div>
+                    <div class="track-img"></div>
                     <div class="track-info">
-                      <div class="track-name">Starboy</div>
-                      <div class="track-artist">The Weeknd, Daft Punk</div>
+                      <div class="track-name">Song</div>
+                      <div class="track-artist">Artist</div>
                     </div>
                   </div>
                   <div class="track-item">
                     <div class="track-rank">5</div>
+                    <div class="track-img"></div>
                     <div class="track-info">
-                      <div class="track-name">Stay</div>
-                      <div class="track-artist">The Kid LAROI, Justin Bieber</div>
+                      <div class="track-name">Song</div>
+                      <div class="track-artist">Artist</div>
                     </div>
                   </div>
                 </div>
@@ -80,23 +82,28 @@
                 <div class="artist-list">
                   <div class="artist-item">
                     <div class="artist-rank">1</div>
-                    <div class="artist-name">The Weeknd</div>
+                    <div class="artist-img"></div>
+                    <div class="artist-name">Artist</div>
                   </div>
                   <div class="artist-item">
                     <div class="artist-rank">2</div>
-                    <div class="artist-name">Drake</div>
+                    <div class="artist-img"></div>
+                    <div class="artist-name">Artist</div>
                   </div>
                   <div class="artist-item">
                     <div class="artist-rank">3</div>
-                    <div class="artist-name">Taylor Swift</div>
+                    <div class="artist-img"></div>
+                    <div class="artist-name">Artist</div>
                   </div>
                   <div class="artist-item">
                     <div class="artist-rank">4</div>
-                    <div class="artist-name">Billie Eilish</div>
+                    <div class="artist-img"></div>
+                    <div class="artist-name">Artist</div>
                   </div>
                   <div class="artist-item">
                     <div class="artist-rank">5</div>
-                    <div class="artist-name">Post Malone</div>
+                    <div class="artist-img"></div>
+                    <div class="artist-name">Artist</div>
                   </div>
                 </div>
               </div>
@@ -105,58 +112,353 @@
                 <h3>Top Genres</h3>
                 <div class="genre-list">
                   <div class="genre-item">
-                    <div class="genre-label">Pop</div>
+                    <div class="genre-label">Genre</div>
                     <div class="genre-bar">
                       <div class="genre-fill" style="width: 85%"></div>
                     </div>
                   </div>
                   <div class="genre-item">
-                    <div class="genre-label">Hip Hop</div>
+                    <div class="genre-label">Genre</div>
                     <div class="genre-bar">
                       <div class="genre-fill" style="width: 67%"></div>
                     </div>
                   </div>
                   <div class="genre-item">
-                    <div class="genre-label">R&B</div>
+                    <div class="genre-label">Genre</div>
                     <div class="genre-bar">
                       <div class="genre-fill" style="width: 52%"></div>
                     </div>
                   </div>
                   <div class="genre-item">
-                    <div class="genre-label">Indie</div>
+                    <div class="genre-label">Genre</div>
                     <div class="genre-bar">
                       <div class="genre-fill" style="width: 43%"></div>
                     </div>
                   </div>
                   <div class="genre-item">
-                    <div class="genre-label">Rock</div>
+                    <div class="genre-label">Genre</div>
                     <div class="genre-bar">
                       <div class="genre-fill" style="width: 31%"></div>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              
+            </div>
+            
+            <div class="friends-button-container">
+              <button id="view-friends-btn" class="btn btn-outline">See Friends' Stats</button>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Friends Stats Section (Hidden by default) -->
+        <section id="friends-stats" class="friends-section hidden">
+          <div class="container">
+            <div class="stats-header">
+              <h2>Your <span class="accent">Friends' Stats</span></h2>
+              <p>Check out what your friends have been listening to</p>
+            </div>
+            
+            <div class="friend-selector">
+              <button class="friend-tab active" data-friend="nathan">Nathan</button>
+              <button class="friend-tab" data-friend="elijah">Elijah</button>
+            </div>
+            
+            <!-- Nathan's Stats -->
+            <div class="friend-stats" data-friend="nathan">
+              <div class="stats-grid">
+                <div class="stats-card">
+                  <h3>Top Tracks</h3>
+                  <div class="track-list">
+                    <div class="track-item">
+                      <div class="track-rank">1</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                    <div class="track-item">
+                      <div class="track-rank">2</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                    <div class="track-item">
+                      <div class="track-rank">3</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                    <div class="track-item">
+                      <div class="track-rank">4</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                    <div class="track-item">
+                      <div class="track-rank">5</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="stats-card">
+                  <h3>Top Artists</h3>
+                  <div class="artist-list">
+                    <div class="artist-item">
+                      <div class="artist-rank">1</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                    <div class="artist-item">
+                      <div class="artist-rank">2</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                    <div class="artist-item">
+                      <div class="artist-rank">3</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                    <div class="artist-item">
+                      <div class="artist-rank">4</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                    <div class="artist-item">
+                      <div class="artist-rank">5</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="stats-card">
+                  <h3>Top Genres</h3>
+                  <div class="genre-list">
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 80%"></div>
+                      </div>
+                    </div>
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 70%"></div>
+                      </div>
+                    </div>
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 55%"></div>
+                      </div>
+                    </div>
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 40%"></div>
+                      </div>
+                    </div>
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 35%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
+            
+ 
+            <!-- Elijah's Stats -->
+            <div class="friend-stats hidden" data-friend="elijah">
+              <div class="stats-grid">
+                <div class="stats-card">
+                  <h3>Top Tracks</h3>
+                  <div class="track-list">
+                    <div class="track-item">
+                      <div class="track-rank">1</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                    <div class="track-item">
+                      <div class="track-rank">2</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                    <div class="track-item">
+                      <div class="track-rank">3</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                    <div class="track-item">
+                      <div class="track-rank">4</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                    <div class="track-item">
+                      <div class="track-rank">5</div>
+                      <div class="track-img"></div>
+                      <div class="track-info">
+                        <div class="track-name">Song</div>
+                        <div class="track-artist">Artist</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="stats-card">
+                  <h3>Top Artists</h3>
+                  <div class="artist-list">
+                    <div class="artist-item">
+                      <div class="artist-rank">1</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                    <div class="artist-item">
+                      <div class="artist-rank">2</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                    <div class="artist-item">
+                      <div class="artist-rank">3</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                    <div class="artist-item">
+                      <div class="artist-rank">4</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                    <div class="artist-item">
+                      <div class="artist-rank">5</div>
+                      <div class="artist-img"></div>
+                      <div class="artist-name">Artist</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="stats-card">
+                  <h3>Top Genres</h3>
+                  <div class="genre-list">
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 92%"></div>
+                      </div>
+                    </div>
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 78%"></div>
+                      </div>
+                    </div>
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 65%"></div>
+                      </div>
+                    </div>
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 45%"></div>
+                      </div>
+                    </div>
+                    <div class="genre-item">
+                      <div class="genre-label">Genre</div>
+                      <div class="genre-bar">
+                        <div class="genre-fill" style="width: 32%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="return-button-container">
+              <a href="index.html" class="btn btn-ghost">Back to Home</a>
             </div>
           </div>
         </section>
       </main>
 
       <!-- Footer -->
-      <footer class="footer">
+      <footer id="about" class="footer">
+      <footer id="about" class="footer">
         <div class="container">
           <div class="footer-content">
             <div class="logo">
               <span>Unwrapped</span>
             </div>
-            <p class="copyright">© <span id="current-year">2023</span> Unwrapped. Not affiliated with Spotify.</p>
+            <p class="copyright">© <span id="current-year">2025</span> Unwrapped. Not affiliated with Spotify.</p>
           </div>
         </div>
       </footer>
     </div>
-    
-    <script>
-      // Set current year in footer
-      document.getElementById('current-year').textContent = new Date().getFullYear();
+   
+      <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Toggle friends section visibility
+        document.getElementById('view-friends-btn').addEventListener('click', function() {
+          const friendsSection = document.getElementById('friends-stats');
+          friendsSection.classList.remove('hidden');
+          friendsSection.scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Friend tab switching
+        const friendTabs = document.querySelectorAll('.friend-tab');
+        const friendStats = document.querySelectorAll('.friend-stats');
+        
+        friendTabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            friendTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Hide all comparisons
+            friendStats.forEach(stat => stat.classList.add('hidden'));
+            
+            // Show the selected comparison
+            const friendId = this.getAttribute('data-friend');
+            document.querySelector(`.friend-stats[data-friend="${friendId}"]`).classList.remove('hidden');
+          });
+        });
+      </script>
     </script>
   </body>
 </html>
