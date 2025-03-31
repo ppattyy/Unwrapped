@@ -6,6 +6,8 @@
     <title>Your Stats - Unwrapped</title>
     <link rel="stylesheet" href="styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="script.js"></script>
   </head>
   <body>
     <div id="root">
@@ -26,12 +28,17 @@
         <section id="your-stats" class="stats-section">
           <div class="container">
             <div class="stats-header">
-              <h1>Your <span class="accent">Listening Stats</span></h1>
+              <h1>Your <span class="stats accent">Listening Stats</span></h1>
               <p>Based on your Spotify activity over the last 6 months</p>
+              <div class="duration">
+                <button class="stats-length">4 Weeks</button>
+                <button class="stats-length">6 Months</button>
+                <button class="stats-length active">2024</button>
+              </div>
             </div>
             
             <div class="stats-grid">
-              <div class="stats-card">
+              <div class="stats-card tracks">
                 <h3>Top Tracks</h3>
                 <div class="track-list">
                   <div class="track-item">
@@ -77,7 +84,7 @@
                 </div>
               </div>
               
-              <div class="stats-card">
+              <div class="stats-card artists">
                 <h3>Top Artists</h3>
                 <div class="artist-list">
                   <div class="artist-item">
@@ -108,7 +115,7 @@
                 </div>
               </div>
               
-              <div class="stats-card">
+              <div class="stats-card genre">
                 <h3>Top Genres</h3>
                 <div class="genre-list">
                   <div class="genre-item">
@@ -159,6 +166,11 @@
             <div class="stats-header">
               <h2>Your <span class="accent">Friends' Stats</span></h2>
               <p>Check out what your friends have been listening to</p>
+              <div class="duration">
+                <button class="stats-length-friends">4 Weeks</button>
+                <button class="stats-length-friends">6 Months</button>
+                <button class="stats-length-friends active">2024</button>
+              </div>
             </div>
             
             <div class="friend-selector">
@@ -457,8 +469,30 @@
             const friendId = this.getAttribute('data-friend');
             document.querySelector(`.friend-stats[data-friend="${friendId}"]`).classList.remove('hidden');
           });
+
         });
+
+        const durationTabs = document.querySelectorAll('.stats-length');
+
+        durationTabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            durationTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+          });
+        });
+
+        const durationTabsFriends = document.querySelectorAll('.stats-length-friends');
+
+        durationTabsFriends.forEach(tab => {
+          tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            durationTabsFriends.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+          });
+        });        
       </script>
-    </script>
   </body>
 </html>
