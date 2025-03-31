@@ -181,7 +181,8 @@ ul {
 
 /* Features Section */
 .features {
-    padding: 2rem 0; 
+    margin: 8rem 0 0 0;
+    padding-bottom: 7rem; 
     background-color: var(--spotify-black);
 }
 
@@ -381,6 +382,7 @@ ul {
 }
 
 .friends-section {
+    margin-top: 20rem;
     background-color: var(--spotify-black);
 }
 
@@ -396,7 +398,12 @@ ul {
     margin-bottom: 2rem;
 }
 
-.friend-tab {
+.stats-length, .stats-length-friends {
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.friend-tab, .stats-length, .stats-length-friends {
     background-color: transparent;
     border: 1px solid var(--spotify-lightgray);
     color: var(--spotify-lightgray);
@@ -411,7 +418,7 @@ ul {
     border-color: white;
 }
 
-.friend-tab.active {
+.friend-tab.active, .stats-length.active {
     background-color: var(--spotify-green);
     color: black;
     border-color: var(--spotify-green);
