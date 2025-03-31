@@ -326,14 +326,14 @@ ul {
     font-weight: 500;
 }
 
-.genre-bar, .compatibility-bar {
+.genre-bar {
     height: 0.5rem;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 1rem;
     overflow: hidden;
 }
 
-.genre-fill, .compatibility-fill {
+.genre-fill {
     height: 100%;
     background-color: var(--spotify-green);
     border-radius: 1rem;
@@ -417,38 +417,7 @@ ul {
     border-color: var(--spotify-green);
 }
 
-.compatibility {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
 
-.compatibility-score {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--spotify-green);
-}
-
-.compatibility-label {
-    color: var(--spotify-lightgray);
-}
-
-.shared-artists h4 {
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-.shared-artists ul {
-    color: var(--spotify-lightgray);
-}
-
-.discovery-text {
-    margin-bottom: 1rem;
-    color: var(--spotify-lightgray);
-}
 
 /* Trending Chart */
 .trend-chart {
