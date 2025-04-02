@@ -29,7 +29,7 @@
           <div class="container">
             <div class="stats-header">
               <h1>Your <span class="stats accent">Listening Stats</span></h1>
-              <p>Based on your Spotify activity over the last 6 months</p>
+              <p>Based on your Spotify activity over the last</p>
               <div class="duration">
                 <button class="stats-length">4 Weeks</button>
                 <button class="stats-length">6 Months</button>
@@ -160,7 +160,7 @@
           </div>
         </section>
         
-        <!-- Friends Stats Section (Hidden by default) -->
+        <!-- Friends Stats Section (Hidden rn) -->
         <section id="friends-stats" class="friends-section hidden">
           <div class="container">
             <div class="stats-header">
@@ -419,26 +419,20 @@
               </div>
             </div>
             
-            <div class="return-button-container">
-              <a href="index.html" class="btn btn-ghost">Back to Home</a>
-            </div>
           </div>
         </section>
       </main>
 
-      <!-- Footer -->
-      <footer id="about" class="footer">
-      <footer id="about" class="footer">
-        <div class="container">
-          <div class="footer-content">
-            <div class="logo">
-              <span>Unwrapped</span>
-            </div>
-            <p class="copyright"> <span id="current-year">2025</span> Unwrapped. Not affiliated with Spotify.</p>
+        <!-- Footer -->
+        <footer id="about" class="footer">
+          <div class="container">
+              <div class="footer-content">
+                  <div class="logo">Unwrapped</div>
+                  <p class="copyright">&copy; <span id="current-year">2025</span> Unwrapped. Not affiliated with Spotify.</p>
+              </div>
           </div>
-        </div>
       </footer>
-    </div>
+  </div>
    
       <script>
         // Set current year in footer
@@ -451,21 +445,17 @@
           friendsSection.scrollIntoView({ behavior: 'smooth' });
         });
         
-        // Friend tab switching
+        // Hide friends section on page load
         const friendTabs = document.querySelectorAll('.friend-tab');
         const friendStats = document.querySelectorAll('.friend-stats');
         
         friendTabs.forEach(tab => {
           tab.addEventListener('click', function() {
-            // Remove active class from all tabs
             friendTabs.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
             this.classList.add('active');
             
-            // Hide all comparisons
             friendStats.forEach(stat => stat.classList.add('hidden'));
             
-            // Show the selected comparison
             const friendId = this.getAttribute('data-friend');
             document.querySelector(`.friend-stats[data-friend="${friendId}"]`).classList.remove('hidden');
           });
@@ -476,9 +466,7 @@
 
         durationTabs.forEach(tab => {
           tab.addEventListener('click', function() {
-            // Remove active class from all tabs
             durationTabs.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
             this.classList.add('active');
           });
         });
@@ -487,9 +475,7 @@
 
         durationTabsFriends.forEach(tab => {
           tab.addEventListener('click', function() {
-            // Remove active class from all tabs
             durationTabsFriends.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
             this.classList.add('active');
           });
         });        
