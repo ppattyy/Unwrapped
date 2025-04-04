@@ -1,0 +1,14 @@
+:root {
+    --spotify-green: #1DB954;
+    --spotify-black: #000000; 
+    --spotify-lightgray: #B3B3B3;
+    --transition: all 0.3s ease;
+    --radius: 0.5rem;
+}
+
+button {
+    background-color: var(--spotify-green);
+    color: var(--spotify-black);
+    border: none;
+    border-radius: var(--radius);
+}
