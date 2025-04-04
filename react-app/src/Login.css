@@ -1,0 +1,28 @@
+
+:root {
+    --spotify-green: #1DB954;
+    --spotify-black: #000000; 
+    --spotify-lightgray: #B3B3B3;
+    --transition: all 0.3s ease;
+    --radius: 0.5rem;
+}
+
+body {
+    background-color: var(--spotify-black);
+}
+
+h1 {
+    color: var(--spotify-lightgray);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#root {
+    margin: 0 auto;
+    text-align: center;
+    min-height: 500px;
+  }
+
+.c-bOcPnF-cmFMMs-color-primary{
+    background-color: var(--spotify-green) !important;
+}
