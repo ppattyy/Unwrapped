@@ -7,7 +7,7 @@ import ConnectButton from './ConnectButton.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ConnectButton />
+    <Login />
   </StrictMode>,
 )
 
