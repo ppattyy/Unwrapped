@@ -1,5 +1,9 @@
+import { createClient } from "@supabase/supabase-js";
 import { generateRandomString, generateCodeChallenge } from './auth.js';
 import { getToken } from './token.js'; 
+import { fetchProfile, fetchTopTracks, fetchTopArtists } from './fetch.js';
+
+const supabase = createClient("https://ohvjoekcangwhrpwqcpw.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9odmpvZWtjYW5nd2hycHdxY3B3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxOTE0NzcsImV4cCI6MjA1ODc2NzQ3N30.NSkMSsN3lH0Bmgu6kuCinn0B7kY0L460D3Af142CEzc");
 
 /*
  * This function is used to start the authorization flow for Spotify.
@@ -39,8 +43,31 @@ code in the URL it uses to to get an access token from token.js
     const code = urlParams.get('code');
     if (code) {
       const accessToken = await getToken(code); //From token.js
+
+      const profile = await fetchProfile(accessToken); // Get the profile from Spotify API
+      const topArtists = {};
+      topArtists["long_term"] = await fetchTopArtists(accessToken, 5, "long_term"); //Get the top artists from Spotify API
+      topArtists["medium_term"] = await fetchTopArtists(accessToken, 5, "medium_term"); 
+      topArtists["short_term"] = await fetchTopArtists(accessToken, 5, "short_term"); 
+      const topTracks = {};
+      topTracks["long_term"] = await fetchTopTracks(accessToken, 5, "long_term"); //Get the top tracks from Spotify API
+      topTracks["medium_term"] = await fetchTopTracks(accessToken, 5, "medium_term"); 
+      topTracks["short_term"] = await fetchTopTracks(accessToken, 5, "short_term"); 
+
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (userError || !user) {
+        console.error("Failed to get Supabase user:", userError);
+        return;
+      }
+
+      const { error } = await supabase
+        .from('profiles')
+        .update({ top_artists: topArtists, top_tracks: topTracks, profile_object: profile })
+        .eq('id', user.id) 
+      if (error) {
+        console.error("Error updating profile:", error);
+      }
       // FETCH FUNCTIONS FROM fetch.js //
-      // const profile = await fetchProfile(accessToken);
       // const currentTrack = await fetchCurrentTrack(accessToken);
       // const topTrackList = await fetchTopTracks(accessToken, 20, "long_term"); 
         /* Number of tracks can range from 1 to 50. Time period can be short_term, medium_term, or long_term.
