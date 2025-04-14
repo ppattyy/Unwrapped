@@ -8,6 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="script.js" defer></script>
+    <script>
+        function handleScroll() {
+            const scrollDownContainer = document.querySelector('.scroll-down-container');
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            const scrollThreshold = documentHeight - windowHeight - 25;
+
+            if (scrollTop > scrollThreshold) {
+                scrollDownContainer.classList.add('hidden');
+            } else {
+                scrollDownContainer.classList.remove('hidden');
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+    </script>
 </head>
 <body>
     <div id="root">
@@ -33,6 +50,14 @@
                     </div>
                 </div>
             </section>
+
+            <div class="scroll-down-container"> 
+                <div class="scroll-down">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
 
             <!-- Features Section -->
             <section id="features" class="features">

@@ -15,6 +15,7 @@
 
 ::-webkit-scrollbar {
     width: 8px; 
+    background: transparent;
   }
   
   ::-webkit-scrollbar-track {
@@ -63,6 +64,65 @@ a {
     margin: 0 auto;
     padding: 0 2rem;
 }
+
+body{
+	margin: 0;
+	padding: 0;
+	background: black;
+}
+
+/* Scroll Down */
+.scroll-down-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0rem; 
+    margin-top: 2rem;
+    transition: opacity 0.5s ease-in-out; /* Added transition */
+}
+
+.scroll-down {
+    display: flex;
+    justify-content: center; 
+}
+
+.scroll-down span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--spotify-green); 
+    border-right: 2px solid var(--spotify-green); 
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: animate 3.2s infinite;
+}
+
+.scroll-down span:nth-child(2) {
+    animation-delay: -0.4s;
+}
+
+.scroll-down span:nth-child(3) {
+    animation-delay: -0.8s;
+}
+
+@keyframes animate {
+
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+}
+
 
 /* Button */
 .btn {
@@ -411,7 +471,7 @@ a {
 
 /* Hide sections */
 .hidden {
-    display: none;
+    opacity: 0
 }
 
 .friend-selector {
