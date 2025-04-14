@@ -6,7 +6,7 @@ import { getToken } from './token.js';
  * It generates a code verifier and code challenge, and redirects the user to the Spotify authorization page.
  * The return is handled by the function handleRedirect() in this file.
  */
-const startAuthFlow = async () => {
+export const startAuthFlow = async () => {
     const codeVerifier = generateRandomString(128); //From auth.js
     localStorage.setItem('code_verifier', codeVerifier);
     const codeChallenge = await generateCodeChallenge(codeVerifier); //From auth.js
@@ -34,7 +34,7 @@ const startAuthFlow = async () => {
 Runs whenever the webpage loads. If the user is returning from a redirect with a Spotify
 code in the URL it uses to to get an access token from token.js
  */
-  const handleRedirect = async () => {
+ export const handleRedirect = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     if (code) {
