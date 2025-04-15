@@ -465,13 +465,15 @@ body{
 }
 
 .friends-section {
-    margin-top: 20rem;
+    margin-top: 4rem;
     background-color: var(--spotify-black);
+    padding-bottom: 4rem;
 }
 
 /* Hide sections */
 .hidden {
-    opacity: 0
+    display: none !important;
+    opacity: 0 !important;
 }
 
 .friend-selector {
@@ -479,6 +481,7 @@ body{
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .stats-length, .stats-length-friends {
@@ -537,6 +540,14 @@ body{
     color: var(--spotify-lightgray);
 }
 
+/* Friend stats grid for consistency */
+.friend-stats .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
 /* Genre Grid */
 .genre-grid {
     display: grid;
@@ -564,6 +575,10 @@ body{
     }
     
     .genre-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .friend-stats .stats-grid {
         grid-template-columns: 1fr;
     }
 }

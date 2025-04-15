@@ -437,48 +437,45 @@
       <script>
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        
+
         // Toggle friends section visibility
         document.getElementById('view-friends-btn').addEventListener('click', function() {
           const friendsSection = document.getElementById('friends-stats');
           friendsSection.classList.remove('hidden');
           friendsSection.scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Hide friends section on page load
-        const friendTabs = document.querySelectorAll('.friend-tab');
-        const friendStats = document.querySelectorAll('.friend-stats');
-        
-        friendTabs.forEach(tab => {
-          tab.addEventListener('click', function() {
-            friendTabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            
-            friendStats.forEach(stat => stat.classList.add('hidden'));
-            
-            const friendId = this.getAttribute('data-friend');
-            document.querySelector(`.friend-stats[data-friend="${friendId}"]`).classList.remove('hidden');
+
+          // Attach event listeners for friend tabs after section is visible
+          const friendTabs = friendsSection.querySelectorAll('.friend-tab');
+          const friendStats = friendsSection.querySelectorAll('.friend-stats');
+
+          friendTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+              friendTabs.forEach(t => t.classList.remove('active'));
+              this.classList.add('active');
+              friendStats.forEach(stat => stat.classList.add('hidden'));
+              const friendId = this.getAttribute('data-friend');
+              friendsSection.querySelector(`.friend-stats[data-friend="${friendId}"]`).classList.remove('hidden');
+            });
           });
 
+          // Attach event listeners for duration tabs in friends section
+          const durationTabsFriends = friendsSection.querySelectorAll('.stats-length-friends');
+          durationTabsFriends.forEach(tab => {
+            tab.addEventListener('click', function() {
+              durationTabsFriends.forEach(t => t.classList.remove('active'));
+              this.classList.add('active');
+            });
+          });
         });
 
+        // Duration tabs for your stats (main section)
         const durationTabs = document.querySelectorAll('.stats-length');
-
         durationTabs.forEach(tab => {
           tab.addEventListener('click', function() {
             durationTabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
           });
         });
-
-        const durationTabsFriends = document.querySelectorAll('.stats-length-friends');
-
-        durationTabsFriends.forEach(tab => {
-          tab.addEventListener('click', function() {
-            durationTabsFriends.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-          });
-        });        
       </script>
   </body>
 </html>
