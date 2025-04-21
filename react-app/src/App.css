@@ -1,4 +1,7 @@
 /* Base and Root */
+
+@import "tailwindcss";
+
 * {
   margin: 0;
   padding: 0;
@@ -217,17 +220,15 @@ background: black;
   position: relative;
   padding: 6rem 0 1rem; 
   display: flex;
-  align-items: center;
   min-height: 75vh;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   max-width: 48rem;
-  margin: 0 auto;
+  margin: 0;
+  padding-left: 2rem;
 }
 
 .hero-title {
@@ -257,7 +258,7 @@ background: black;
 
 .hero-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 2rem;
 }
 
@@ -472,8 +473,8 @@ background: black;
 
 /* Hide sections */
 .hidden {
-  display: none !important;
-  opacity: 0 !important;
+  display: none;
+  opacity: 0;
 }
 
 .friend-selector {
