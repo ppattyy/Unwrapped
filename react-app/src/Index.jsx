@@ -5,7 +5,7 @@ function HandleScroll() {
   const windowHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  const scrollThreshold = documentHeight - windowHeight - 25;
+  const scrollThreshold = documentHeight - windowHeight - 200;
 
   if (scrollTop > scrollThreshold) {
       scrollDownContainer.classList.add('hidden');

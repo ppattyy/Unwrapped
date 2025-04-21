@@ -16,7 +16,7 @@ function StatsHeader() {
     return (
         <div class="stats-header">
               <h1>Your <span class="stats accent">Listening Stats</span></h1>
-              <p>Based on your Spotify activity over the last</p>
+              <p>Based on your Spotify activity over the last...</p>
               <div class="duration">
                 <button class="stats-length">4 Weeks</button>
                 <button class="stats-length">6 Months</button>
