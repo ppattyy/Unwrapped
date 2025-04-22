@@ -82,7 +82,18 @@ background: black;
   justify-content: center;
   margin-bottom: 0rem; 
   margin-top: 2rem;
-  transition: opacity 0.5s ease-in-out; /* Added transition */
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-in-out, 
+              visibility 0.5s ease-in-out,
+              transform 0.5s ease-in-out;
+}
+
+.scroll-down-container.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
 }
 
 .scroll-down {
@@ -110,22 +121,18 @@ background: black;
 }
 
 @keyframes animate {
-
   0% {
-      opacity: 0;
-      transform: rotate(45deg) translate(-20px, -20px);
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
   }
-
   50% {
-      opacity: 1;
+    opacity: 1;
   }
-
   100% {
-      opacity: 0;
-      transform: rotate(45deg) translate(20px, 20px);
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
   }
 }
-
 
 /* Button */
 .btn {
@@ -473,7 +480,6 @@ background: black;
   padding-bottom: 4rem;
 }
 
-/* Hide sections */
 .hidden {
   display: none !important;
   opacity: 0 !important;
@@ -543,7 +549,7 @@ background: black;
   color: var(--spotify-lightgray);
 }
 
-/* Friend stats grid for consistency */
+/* Friend stats */
 .friend-stats .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
