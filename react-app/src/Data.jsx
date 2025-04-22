@@ -49,6 +49,7 @@ function StatsTracks({currDuration, profile}) {
             <h3>Top Tracks</h3>
             <div className="track-list">
                 {topTracks.map((track, i) => (
+                    <a href={track.uri}>
                     <div className="track-item" key={i}>
                         <div className="track-rank">{i+1}</div>
                         <img src={track.album.images[2].url} className="track-img"></img>
@@ -57,6 +58,7 @@ function StatsTracks({currDuration, profile}) {
                             <div className="track-artist">{track.artists[0].name}</div>
                         </div>  
                     </div>
+                    </a>
                 ))}
             </div>
         </div>
@@ -78,11 +80,13 @@ function StatsArtists({currDuration, profile}) {
             <h3>Top Artists</h3>
             <div className="artist-list">
                 {topArtists.map((artist, i) => (
+                    <a href={artist.uri}>
                     <div className="artist-item" key={i}>
                         <div className="artist-rank">{i+1}</div>
                         <img src={artist.images[2].url} className="artist-img"></img>
                         <div className="artist-info">{artist.name}</div>
                     </div>
+                    </a>
                 ))}
             </div>
         </div>
