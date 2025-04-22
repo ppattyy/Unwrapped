@@ -1,6 +1,14 @@
 import './App.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { createClient } from "@supabase/supabase-js";
 import mockTopArtists from './mockdata/mockTopArtists.json';
+
+const supabase = createClient("https://ohvjoekcangwhrpwqcpw.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9odmpvZWtjYW5nd2hycHdxY3B3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxOTE0NzcsImV4cCI6MjA1ODc2NzQ3N30.NSkMSsN3lH0Bmgu6kuCinn0B7kY0L460D3Af142CEzc");
+
+const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+const { data: { user }, error: userError } = await supabase.auth.getUser();
+
+
 
 function Header() {
     return (
@@ -14,31 +22,39 @@ function Header() {
 
 function StatsHeader() {
     return (
-        <div class="stats-header">
-              <h1>Your <span class="stats accent">Listening Stats</span></h1>
+        <div className="stats-header">
+              <h1>Your <span className="stats accent">Listening Stats</span></h1>
               <p>Based on your Spotify activity over the last</p>
-              <div class="duration">
-                <button class="stats-length">4 Weeks</button>
-                <button class="stats-length">6 Months</button>
-                <button class="stats-length active">2024</button>
+              <div className="duration">
+                <button className="stats-length">4 Weeks</button>
+                <button className="stats-length">6 Months</button>
+                <button className="stats-length active">2024</button>
               </div>
         </div>
     );
 }
 
-function StatsTracks() {
-    const tracks = [1, 2, 3, 4, 5];
+function StatsTracks({currDuration, profile}) {
+    const [topTracks, setTopTracks] = useState([]); 
+    useEffect(() => {
+        getTopTracks();
+      }, [currDuration]);
+
+      async function getTopTracks() {
+        setTopTracks(profile.top_tracks[currDuration].items);
+      }
+
     return (
-        <div class="stats-card tracks">
+        <div className="stats-card tracks">
             <h3>Top Tracks</h3>
-            <div class="track-list">
-                {tracks.map((_, i) => (
-                    <div class="track-item" key={i}>
-                        <div class="track-rank">{i+1}</div>
-                        <div class="track-img"></div>
-                        <div class="track-info">
-                            <div class="track-name">Song</div>
-                            <div class="track-artist">Artist</div>
+            <div className="track-list">
+                {topTracks.map((track, i) => (
+                    <div className="track-item" key={i}>
+                        <div className="track-rank">{i+1}</div>
+                        <img src={track.album.images[2].url} className="track-img"></img>
+                        <div className="track-info">
+                            <div className="track-name">{track.name}</div>
+                            <div className="track-artist">{track.artists[0].name}</div>
                         </div>  
                     </div>
                 ))}
@@ -47,17 +63,25 @@ function StatsTracks() {
     );
 }
 
-function StatsArtists() {
-    const artists = [1, 2, 3, 4, 5];
+function StatsArtists({currDuration, profile}) {
+    const [topArtists, setTopArtists] = useState([]);
+    useEffect(() => {
+        getTopArtists();
+      }, [currDuration]);
+
+      async function getTopArtists() {
+        setTopArtists(profile.top_artists[currDuration].items);
+      }
+
     return (
-        <div class="stats-card artist">
+        <div className="stats-card artist">
             <h3>Top Artists</h3>
-            <div class="artist-list">
-                {artists.map((_, i) => (
-                    <div class="artist-item" key={i}>
-                        <div class="artist-rank">{i+1}</div>
-                        <div class="artist-img"></div>
-                        <div class="artist-info">Name</div>
+            <div className="artist-list">
+                {topArtists.map((artist, i) => (
+                    <div className="artist-item" key={i}>
+                        <div className="artist-rank">{i+1}</div>
+                        <img src={artist.images[2].url} className="artist-img"></img>
+                        <div className="artist-info">{artist.name}</div>
                     </div>
                 ))}
             </div>
@@ -68,14 +92,14 @@ function StatsArtists() {
 function StatsGenre() {
     const genreBar = [85, 67, 52, 43, 31];
     return (
-        <div class="stats-card genre">
+        <div className="stats-card genre">
             <h3>Top Genres</h3>
-            <div class="genre-list">
+            <div className="genre-list">
                 {genreBar.map((percentage, i) => (
-                    <div class="genre-item" key={i}>
-                        <div class="genre-label">Genre</div>
-                        <div class="genre-bar">
-                            <div class="genre-fill" style={{width: `${percentage}%`}}></div>
+                    <div className="genre-item" key={i}>
+                        <div className="genre-label">Genre</div>
+                        <div className="genre-bar">
+                            <div className="genre-fill" style={{width: `${percentage}%`}}></div>
                         </div> 
                     </div>
                 ))}
@@ -86,8 +110,8 @@ function StatsGenre() {
 
 function FriendsContainer() {
     return (
-        <div class="friends-button-container">
-            <button id="view-friends-btn" class="btn btn-outline">See Friends' Stats</button>
+        <div className="friends-button-container">
+            <button id="view-friends-btn" className="btn btn-outline">See Friends' Stats</button>
         </div>
     )
 }
@@ -106,8 +130,26 @@ function Footer() {
   }
 
 function Data() {
+    const [loading, setLoading] = useState(true);
+    const [currDuration, setCurrDuration] = useState("long_term");
+    const [currDurationFriend, setCurrDurationFriend] = useState("long_term");
+    const [profile, setProfile] = useState({});
+    
+    async function getProfile() {
+        const { data } = await supabase
+            .from("profiles").select()
+            .eq("id", user.id);
+            
+            if (data?.length) {
+                setProfile(data[0]);
+              }
+              setLoading(false);
+      }
 
         useEffect(() => {
+            // Get the profile data from Supabase
+            getProfile();
+
             // Set the current year in footer
             const currentYear = document.getElementById("current-year");
             if (currentYear) {
@@ -156,8 +198,16 @@ function Data() {
             tab.addEventListener("click", () => {
                 durationTabs.forEach((t) => t.classList.remove("active"));
                 tab.classList.add("active");
+                if (tab.innerText === "4 Weeks") {
+                    setCurrDuration("short_term");
+                } else if (tab.innerText === "6 Months") {
+                    setCurrDuration("medium_term");
+                } else {
+                    setCurrDuration("long_term");
+                }
             });
             });
+
         }, []);
         
 
@@ -169,11 +219,15 @@ function Data() {
             <section className="stats-section">
               <div className="container">
                 <StatsHeader />
-                <div className="stats-grid">
-                    <StatsTracks />
-                    <StatsArtists />
-                    <StatsGenre />
-                </div>
+                {loading ? (
+                    <div>Loading your stats...</div>
+                    ) : (
+                    <div className="stats-grid">
+                        <StatsTracks currDuration={currDuration} profile={profile} />
+                        <StatsArtists currDuration={currDuration} profile={profile} />
+                        <StatsGenre />
+                    </div>
+                    )}
                 <FriendsContainer />
               </div>
             </section>

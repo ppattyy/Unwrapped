@@ -8,7 +8,7 @@ function ConnectButton() {
       }, []);
 
     return (
-            <button onClick={startAuthFlow}>
+            <button className='btn btn-primary' onClick={startAuthFlow}>
                 Connect Spotify
             </button>
     );

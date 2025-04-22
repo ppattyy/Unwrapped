@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa} from '@supabase/auth-ui-shared'
@@ -18,14 +19,41 @@ function findButtonText() {
 
 const Login = () => {
     const [title, setTitle] = useState("in");
-  
+    const navigate = useNavigate();
+    const location = useLocation();
+
     useEffect(() => {
-        document.body.addEventListener('click', () => {
-            if (event.target.tagName.toLowerCase() === 'a') {
-                setTitle(findButtonText());
-            }
-        });
+      const handler = (event) => {
+        if (event.target.tagName.toLowerCase() === "a") {
+          setTimeout(() => {
+            setTitle(findButtonText());
+          });
+        }
+      };
+      document.body.addEventListener("click", handler);
+  
+      return () => document.body.removeEventListener("click", handler);
     }, []);
+
+    useEffect(() => {
+      const checkSession = async () => {
+        const { data } = await supabase.auth.getSession();
+        if (data.session) {
+          navigate("/home");
+        }
+      };
+      checkSession();
+    
+      const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+        if (event === "SIGNED_IN") {
+          navigate("/home");
+        }
+      });
+    
+      return () => {
+        authListener.subscription.unsubscribe();
+      };
+    }, [navigate]);
   
     return (
       <>
@@ -34,7 +62,7 @@ const Login = () => {
           supabaseClient={supabase}
           appearance={{ theme: ThemeSupa }}
           theme="dark"
-          providers={['spotify']}
+          providers={[]}
         />
       </>
     );

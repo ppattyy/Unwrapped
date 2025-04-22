@@ -1,4 +1,6 @@
 import './App.css'
+import ConnectButton from './ConnectButton.jsx'
+import { useState, useEffect, use } from 'react';
 
 function HandleScroll() {
   const scrollDownContainer = document.querySelector('.scroll-down-container');
@@ -15,11 +17,20 @@ function HandleScroll() {
 }
 
 function Header() {
+  const [profileName, setProfileName] = useState("");
+  useEffect(() => {
+    setProfileName(sessionStorage.getItem("spotify_name"));
+  }, []);
+
   return (
       <header className='header'>
         <div className='container header-container'>
           <div className='logo'><span className='accent'>Unwrapped</span></div>
-          <button className='btn btn-primary'>Connect Spotify</button>
+          {profileName ? (
+            <div>{profileName}</div>
+          ) : (
+          <ConnectButton />
+      )}
         </div>
       </header>
   );
