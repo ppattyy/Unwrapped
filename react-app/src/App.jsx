@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
-import './App.css'
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Index from './Index.jsx';
 import Data from './Data.jsx';
