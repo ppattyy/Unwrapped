@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { createClient } from "@supabase/supabase-js";
+import { Link } from 'react-router-dom';
 import mockTopArtists from './mockdata/mockTopArtists.json';
 
 const supabase = createClient("https://ohvjoekcangwhrpwqcpw.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9odmpvZWtjYW5nd2hycHdxY3B3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxOTE0NzcsImV4cCI6MjA1ODc2NzQ3N30.NSkMSsN3lH0Bmgu6kuCinn0B7kY0L460D3Af142CEzc");
@@ -14,7 +15,9 @@ function Header() {
     return (
         <header className='header'>
           <div className='container header-container'>
-            <div className='logo'><span className='accent'>Unwrapped</span></div>
+            <div className='logo'>
+              <Link to="/home" className='accent'>Unwrapped</Link>
+            </div>
           </div>
         </header>
     );
