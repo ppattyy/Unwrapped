@@ -212,6 +212,17 @@ background: black;
   gap: 1rem;
 }
 
+.header-greeting {
+  font-size: 1.72rem;
+  font-weight: 800;
+  color: rgb(187, 183, 183);
+  letter-spacing: -0.8px;
+}
+
+.header-greeting .accent {
+  font-weight: 500;
+}
+
 /* Hero Section */
 .hero {
   position: relative;

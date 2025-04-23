@@ -35,7 +35,10 @@ function Index() {
         <div className='container header-container'>
           <div className='logo'><span className='accent'>Unwrapped</span></div>
           {profileName ? (
-            <div>{profileName}</div>
+            <div className="header-greeting">
+              <span>Hello, </span>
+              <span> {profileName}</span>
+            </div>
           ) : (
             <ConnectButton />
           )}
