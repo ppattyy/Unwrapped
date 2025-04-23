@@ -129,9 +129,9 @@ function FriendsStats() {
             <h2><span className="accent">Your Friends' Stats</span></h2>
             <p>Check out what your friends have been listening to</p>
             <div className="duration">
-                <button className="stats-length">4 Weeks</button>
-                <button className="stats-length">6 Months</button>
-                <button className="stats-length active">2024</button>
+                <button className="stats-length-friends">4 Weeks</button>
+                <button className="stats-length-friends">6 Months</button>
+                <button className="stats-length-friends active">2024</button>
             </div>
         </div>
     );
@@ -146,39 +146,59 @@ function FriendSelector() {
     );
 }
 
-function NathanTracks() {
-    const tracks = [1, 2, 3, 4, 5];
+function NathanTracks({currDurationFriend, profile}) {
+    const [topTracks, setTopTracks] = useState([]); 
+    useEffect(() => {
+        getTopTracks();
+      }, [currDurationFriend]);
+
+      async function getTopTracks() {
+        setTopTracks(profile.top_tracks[currDurationFriend].items);
+      }
+
     return (
-        <div className="stats-card">
+        <div className="stats-card tracks">
             <h3>Top Tracks</h3>
             <div className="track-list">
-                {tracks.map((_, i) => (
+                {topTracks.map((track, i) => (
+                    <a href={track.uri}>
                     <div className="track-item" key={i}>
                         <div className="track-rank">{i+1}</div>
-                        <div className="track-img"></div>
+                        <img src={track.album.images[2].url} className="track-img"></img>
                         <div className="track-info">
-                            <div className="track-name">Song</div>
-                            <div className="track-artist">Artist</div>
+                            <div className="track-name">{track.name}</div>
+                            <div className="track-artist">{track.artists[0].name}</div>
                         </div>  
                     </div>
+                    </a>
                 ))}
             </div>
         </div>
     );
 }
 
-function NathanArtists() {
-    const artists = [1, 2, 3, 4, 5];
+function NathanArtists({currDurationFriend, profile}) {
+    const [topArtists, setTopArtists] = useState([]);
+    useEffect(() => {
+        getTopArtists();
+      }, [currDurationFriend]);
+
+      async function getTopArtists() {
+        setTopArtists(profile.top_artists[currDurationFriend].items);
+      }
+
     return (
-        <div className="stats-card">
+        <div className="stats-card artist">
             <h3>Top Artists</h3>
             <div className="artist-list">
-                {artists.map((_, i) => (
+                {topArtists.map((artist, i) => (
+                    <a href={artist.uri}>
                     <div className="artist-item" key={i}>
                         <div className="artist-rank">{i+1}</div>
-                        <div className="artist-img"></div>
-                        <div className="artist-info">Name</div>
+                        <img src={artist.images[2].url} className="artist-img"></img>
+                        <div className="artist-info">{artist.name}</div>
                     </div>
+                    </a>
                 ))}
             </div>
         </div>
@@ -279,7 +299,9 @@ function Data() {
     const [loading, setLoading] = useState(true);
     const [currDuration, setCurrDuration] = useState("long_term");
     const [currDurationFriend, setCurrDurationFriend] = useState("long_term");
+    const [friendLoading, setFriendLoading] = useState(true);
     const [profile, setProfile] = useState({});
+    const [friendProfiles, setFriendProfiles] = useState([]);
     
     async function getProfile() {
         const { data } = await supabase
@@ -291,10 +313,29 @@ function Data() {
               }
               setLoading(false);
       }
+      
+      async function getFriendProfile(id) {
+        const { data } = await supabase
+            .from("profiles").select()
+            .eq("id", id);
+            
+            if (data?.length) {
+                setFriendProfiles(prev => [...prev, data[0]]);
+            }
+      }
 
         useEffect(() => {
+            const fetchFriends = async () => {
+                const friendIDs = ["02516fc7-411a-4330-b7b3-cabe0477a657"] // Get specific friend profiles. This is a hardcoded solution.        
+                for (let i = 0; i < friendIDs.length; i++) {
+                    await getFriendProfile(friendIDs[i]);
+                }
+                setFriendLoading(false);
+            };
+
             // Get the profile data from Supabase
-            getProfile();
+            getProfile();    
+            fetchFriends();
 
             // Set the current year in footer
             const currentYear = document.getElementById("current-year");
@@ -314,7 +355,7 @@ function Data() {
 
                 // Friend Tabs
                 const friendTabs = friendsSection.querySelectorAll(".friend-tab");
-                const friendStats = friendsSection.querySelectorAll(".friend-stats");
+                const friendStats = friendsSection.querySelectorAll(".friends-stats");
 
                 friendTabs.forEach((tab) => {
                 tab.addEventListener("click", () => {
@@ -322,7 +363,7 @@ function Data() {
                     tab.classList.add("active");
                     friendStats.forEach((stat) => stat.classList.add("hidden"));
                     const friendId = tab.getAttribute("data-friend");
-                    const target = friendsSection.querySelector(`.friend-stats[data-friend="${friendId}"]`);
+                    const target = friendsSection.querySelector(`.friends-stats[data-friend="${friendId}"]`);
                     if (target) target.classList.remove("hidden");
                 });
                 });
@@ -333,6 +374,13 @@ function Data() {
                 tab.addEventListener("click", () => {
                     durationTabsFriends.forEach((t) => t.classList.remove("active"));
                     tab.classList.add("active");
+                    if (tab.innerText === "4 Weeks") {
+                        setCurrDurationFriend("short_term");
+                    } else if (tab.innerText === "6 Months") {
+                        setCurrDurationFriend("medium_term");
+                    } else {
+                        setCurrDurationFriend("long_term");
+                    }
                 });
                 });
             });
@@ -384,11 +432,15 @@ function Data() {
                     <FriendsStats />
                     <FriendSelector />
                     <div className="friends-stats" data-friend="nathan">
-                        <div className="stats-grid">
-                            <NathanTracks />
-                            <NathanArtists />
-                            <NathanGenre />                        
-                        </div>
+                    {friendLoading ? (
+                    <div>Loading your stats...</div>
+                    ) : (
+                    <div className="stats-grid">
+                        <NathanTracks currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
+                        <NathanArtists currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
+                        <NathanGenre />
+                    </div>
+                    )}
                     </div>
                     <div className="friends-stats hidden" data-friend="elijah">
                         <div className="stats-grid">
