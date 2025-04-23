@@ -57,6 +57,8 @@ const Login = () => {
   
     return (
       <>
+        <div className="login-container">
+        <h1><span className='accent'>Unwrapped</span></h1>
         <h1>Sign {title || "in"}</h1>
         <Auth
           supabaseClient={supabase}
@@ -64,6 +66,8 @@ const Login = () => {
           theme="dark"
           providers={[]}
         />
+        </div>
+
       </>
     );
   }
