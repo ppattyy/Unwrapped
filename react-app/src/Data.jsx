@@ -123,6 +123,145 @@ function FriendsContainer() {
     )
 }
 
+function FriendsStats() {
+    return (
+        <div className="stats-header">
+            <h2><span className="accent">Your Friends' Stats</span></h2>
+            <p>Check out what your friends have been listening to</p>
+            <div className="duration">
+                <button className="stats-length">4 Weeks</button>
+                <button className="stats-length">6 Months</button>
+                <button className="stats-length active">2024</button>
+            </div>
+        </div>
+    );
+}
+
+function FriendSelector() {
+    return (
+        <div className="friend-selector">
+            <button className="friend-tab active" data-friend="nathan">Nathan</button>
+            <button className="friend-tab" data-friend="elijah">Elijah</button>
+        </div>
+    );
+}
+
+function NathanTracks() {
+    const tracks = [1, 2, 3, 4, 5];
+    return (
+        <div className="stats-card">
+            <h3>Top Tracks</h3>
+            <div className="track-list">
+                {tracks.map((_, i) => (
+                    <div className="track-item" key={i}>
+                        <div className="track-rank">{i+1}</div>
+                        <div className="track-img"></div>
+                        <div className="track-info">
+                            <div className="track-name">Song</div>
+                            <div className="track-artist">Artist</div>
+                        </div>  
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function NathanArtists() {
+    const artists = [1, 2, 3, 4, 5];
+    return (
+        <div className="stats-card">
+            <h3>Top Artists</h3>
+            <div className="artist-list">
+                {artists.map((_, i) => (
+                    <div className="artist-item" key={i}>
+                        <div className="artist-rank">{i+1}</div>
+                        <div className="artist-img"></div>
+                        <div className="artist-info">Name</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function NathanGenre() {
+    const genreBar = [85, 67, 52, 43, 31];
+    return (
+        <div className="stats-card">
+            <h3>Top Genres</h3>
+            <div className="genre-list">
+                {genreBar.map((percentage, i) => (
+                    <div className="genre-item" key={i}>
+                        <div className="genre-label">Genre</div>
+                        <div className="genre-bar">
+                            <div className="genre-fill" style={{width: `${percentage}%`}}></div>
+                        </div> 
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function ElijahTracks() {
+    const tracks = [1, 2, 3, 4, 5];
+    return (
+        <div className="stats-card">
+            <h3>Top Tracks</h3>
+            <div className="track-list">
+                {tracks.map((_, i) => (
+                    <div className="track-item" key={i}>
+                        <div className="track-rank">{i+1}</div>
+                        <div className="track-img"></div>
+                        <div className="track-info">
+                            <div className="track-name">Song</div>
+                            <div className="track-artist">Artist</div>
+                        </div>  
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function ElijahArtists() {
+    const artists = [1, 2, 3, 4, 5];
+    return (
+        <div className="stats-card">
+            <h3>Top Artists</h3>
+            <div className="artist-list">
+                {artists.map((_, i) => (
+                    <div className="artist-item" key={i}>
+                        <div className="artist-rank">{i+1}</div>
+                        <div className="artist-img"></div>
+                        <div className="artist-info">Name</div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function ElijahGenre() {
+    const genreBar = [90, 78, 44, 22, 9];
+    return (
+        <div className="stats-card">
+            <h3>Top Genres</h3>
+            <div className="genre-list">
+                {genreBar.map((percentage, i) => (
+                    <div className="genre-item" key={i}>
+                        <div className="genre-label">Genre</div>
+                        <div className="genre-bar">
+                            <div className="genre-fill" style={{width: `${percentage}%`}}></div>
+                        </div> 
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 function Footer() {
     return (
       <footer id="about" className="footer">
@@ -199,6 +338,7 @@ function Data() {
             });
             }
 
+
             // Duration tabs for your stats (main section)
             const durationTabs = document.querySelectorAll(".stats-length");
             durationTabs.forEach((tab) => {
@@ -238,7 +378,29 @@ function Data() {
                 <FriendsContainer />
               </div>
             </section>
-            <section id="features" className="features">
+            <section id="features" className="features"></section>
+                <section id="friends-stats" className="friends-section hidden">
+                <div className="container">
+                    <FriendsStats />
+                    <FriendSelector />
+                    <div className="friends-stats" data-friend="nathan">
+                        <div className="stats-grid">
+                            <NathanTracks />
+                            <NathanArtists />
+                            <NathanGenre />                        
+                        </div>
+                    </div>
+                    <div className="friends-stats hidden" data-friend="elijah">
+                        <div className="stats-grid">
+                            <ElijahTracks />
+                            <ElijahArtists />
+                            <ElijahGenre />                        
+                        </div>
+                    </div>
+                    <div className="return-button-container">
+                        <Link to="/" className="btn btn-ghost">Return Home</Link>
+                    </div>
+                </div>
             </section>
           </main>
             <Footer />
