@@ -56,6 +56,8 @@ code in the URL it uses to to get an access token from token.js
         topTracks["long_term"] = await fetchTopTracks(accessToken, 5, "long_term"); //Get the top tracks from Spotify API
         topTracks["medium_term"] = await fetchTopTracks(accessToken, 5, "medium_term"); 
         topTracks["short_term"] = await fetchTopTracks(accessToken, 5, "short_term"); 
+
+        console.log(topTracks);
   
         const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
         if (sessionError || !sessionData.session) {
