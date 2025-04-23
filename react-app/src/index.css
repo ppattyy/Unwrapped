@@ -377,7 +377,14 @@ background: black;
   display: flex;
   align-items: center;
   gap: 1rem;
+  transition: var(--transition);
 }
+
+.track-item:hover, .artist-item:hover, .discovery-item:hover {
+  color: var(--spotify-green);
+  transform: translateY(-3px);
+}
+
 
 .track-rank, .artist-rank {
   font-size: 1.25rem;
