@@ -141,12 +141,13 @@ function FriendSelector() {
     return (
         <div className="friend-selector">
             <button className="friend-tab active" data-friend="nathan">Nathan</button>
-            <button className="friend-tab" data-friend="elijah">Elijah</button>
+            <button className="friend-tab" data-friend="patrick">Patrick</button>
+            <button className="friend-tab" data-friend="patrick">Elijah</button>
         </div>
     );
 }
 
-function NathanTracks({currDurationFriend, profile}) {
+function FriendTracks({currDurationFriend, profile}) {
     const [topTracks, setTopTracks] = useState([]); 
     useEffect(() => {
         getTopTracks();
@@ -177,7 +178,7 @@ function NathanTracks({currDurationFriend, profile}) {
     );
 }
 
-function NathanArtists({currDurationFriend, profile}) {
+function FriendArtists({currDurationFriend, profile}) {
     const [topArtists, setTopArtists] = useState([]);
     useEffect(() => {
         getTopArtists();
@@ -205,7 +206,7 @@ function NathanArtists({currDurationFriend, profile}) {
     );
 }
 
-function NathanGenre() {
+function FriendGenre() {
     const genreBar = [85, 67, 52, 43, 31];
     return (
         <div className="stats-card">
@@ -326,7 +327,7 @@ function Data() {
 
         useEffect(() => {
             const fetchFriends = async () => {
-                const friendIDs = ["02516fc7-411a-4330-b7b3-cabe0477a657"] // Get specific friend profiles. This is a hardcoded solution.        
+                const friendIDs = ["02516fc7-411a-4330-b7b3-cabe0477a657", "2b99dc44-ca4b-4f2b-b4d2-8a22baa320a6"] // Get specific friend profiles. This is a hardcoded solution.        
                 for (let i = 0; i < friendIDs.length; i++) {
                     await getFriendProfile(friendIDs[i]);
                 }
@@ -436,18 +437,33 @@ function Data() {
                     <div>Loading your stats...</div>
                     ) : (
                     <div className="stats-grid">
-                        <NathanTracks currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
-                        <NathanArtists currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
-                        <NathanGenre />
+                        <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
+                        <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
+                        <FriendGenre />
+                    </div>
+                    )}
+                    </div>
+                    <div className="friends-stats hidden" data-friend="patrick">
+                    {friendLoading ? (
+                    <div>Loading your stats...</div>
+                    ) : (
+                    <div className="stats-grid">
+                        <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
+                        <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
+                        <FriendGenre />
                     </div>
                     )}
                     </div>
                     <div className="friends-stats hidden" data-friend="elijah">
-                        <div className="stats-grid">
-                            <ElijahTracks />
-                            <ElijahArtists />
-                            <ElijahGenre />                        
-                        </div>
+                    {friendLoading ? (
+                    <div>Loading your stats...</div>
+                    ) : (
+                    <div className="stats-grid">
+                        <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
+                        <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
+                        <FriendGenre />
+                    </div>
+                    )}
                     </div>
                     <div className="return-button-container">
                         <Link to="/" className="btn btn-ghost">Return Home</Link>
