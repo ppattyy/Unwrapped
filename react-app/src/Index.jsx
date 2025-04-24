@@ -73,15 +73,15 @@ function Index() {
     return (
       <section className="hero bg-black flex items-center justify-center min-h-[75vh]">
         <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-6xl font-extrabold leading-tight tracking-tight mb-8">
+          <h1 className="text-7xl font-extrabold leading-tight tracking-tight mb-8">
             <span>Your Music,</span> <span className="accent">Right Here</span>
           </h1>
-          <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
             Discover your listening habits and compare with friends. See your top tracks, artists, and genres, all in one place.
           </p>
           <a
             href="Data.jsx"
-            className="btn btn-primary bg-[#1DB954] text-black px-8 py-3 rounded-lg shadow-lg hover:shadow-xl"
+            className="btn btn-primary bg-[#1DB954] text-black px-2.5 py-2.5 rounded-xl shadow-lg hover:shadow-xl font-bold"
           >
             Check Your Stats
           </a>

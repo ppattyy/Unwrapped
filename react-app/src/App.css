@@ -131,7 +131,7 @@ background: black;
   }
 }
 
-/* Button */
+/* Connect Button */
 .btn {
   font-weight: 650;
   font-size: medium;
@@ -163,26 +163,6 @@ background: black;
 .btn-primary {
   background-color: var(--spotify-green);
   color: black;
-}
-
-.btn-primary:hover {
-  background-color: var(--spotify-green);
-  filter: brightness(0.9);
-}
-
-.btn-outline {
-  background-color: transparent;
-  border: 1px solid var(--spotify-lightgray);
-  color: white;
-}
-
-.btn-outline:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.btn-large {
-  padding: 0.75rem 2rem;
-  font-size: 1.5rem;
 }
 
 /* Header Styles */
