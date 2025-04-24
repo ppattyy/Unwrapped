@@ -468,7 +468,7 @@ background: black;
   border-color: white;
 }
 
-.friend-tab.active, .stats-length.active {
+.friend-tab.active, .stats-length.active, .stats-length-friends.active {
   background-color: var(--spotify-green);
   color: black;
   border-color: var(--spotify-green);
