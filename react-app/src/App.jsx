@@ -12,6 +12,8 @@ function App() {
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
+    sessionStorage.setItem('loading', "false");
+
     const checkSession = async () => {
       const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
       if (sessionError || !sessionData.session) {

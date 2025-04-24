@@ -63,12 +63,14 @@ code in the URL it uses to to get an access token from token.js
         const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
         if (sessionError || !sessionData.session) {
           console.error("No session found:", sessionError);
+          sessionStorage.setItem('loading', "false");
           return;
         }
   
         const { data: { user }, error: userError } = await supabase.auth.getUser();
         if (userError || !user) {
           console.error("Failed to get Supabase user:", userError);
+          sessionStorage.setItem('loading', "false");
           return;
         }
   
@@ -78,6 +80,7 @@ code in the URL it uses to to get an access token from token.js
           .eq('id', user.id) 
         if (error) {
           console.error("Error updating profile:", error);
+          sessionStorage.setItem('loading', "false");
         }
         sessionStorage.setItem('loading', "false");
         // FETCH FUNCTIONS FROM fetch.js //
