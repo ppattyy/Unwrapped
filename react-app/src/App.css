@@ -63,18 +63,14 @@ a {
   margin: 1rem;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem; 
-}
+
 
 .hero {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: -5rem; 
+  margin-top: -5rem;
 }
 
 body{

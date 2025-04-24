@@ -61,10 +61,10 @@ function Index() {
 
   function Hero() {
     return (
-      <section className="hero bg-black flex items-center justify-center]">
+      <section className="hero bg-black flex items-center justify-center">
         <div className="container mx-auto max-w-4xl text-center">
           <h1 className="text-5xl font-extrabold hero-spacing">
-            <span>Your Music,</span> <span className="text-[#1DB954]">Right Here</span>
+            <span>Your Music,</span> <span className="accent">Right Here</span>
           </h1>
           <p className="text-lg text-gray-400 hero-spacing">
             Discover your listening habits and compare with friends. See your top tracks, artists, and genres, all in one place.
