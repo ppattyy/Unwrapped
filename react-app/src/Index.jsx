@@ -61,33 +61,37 @@ function Index() {
 
   function Hero() {
     return (
-      <div className="container">
-        <div className="hero-content">
-          <h1 className="hero-title">
-            <span>Your Music,</span> <span className="accent"> Right Here</span>
+      <section className="hero bg-black flex items-center justify-center]">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h1 className="text-5xl font-extrabold hero-spacing">
+            <span>Your Music,</span> <span className="text-[#1DB954]">Right Here</span>
           </h1>
-          <p className="hero-description">Discover your listening habits ad compare with friends. See your top tracks, artists, and genres, all in one place.</p>
-          <a href="Data.jsx" className="btn btn-primary">Check Your Stats</a>
+          <p className="text-lg text-gray-400 hero-spacing">
+            Discover your listening habits and compare with friends. See your top tracks, artists, and genres, all in one place.
+          </p>
+          <a href="Data.jsx" className="btn btn-primary bg-[#1DB954] text-black px-8 py-3 rounded-lg shadow-lg hover:shadow-xl">
+            Check Your Stats
+          </a>
         </div>
-      </div>
+      </section>
     );
   }
 
   function Features() {
     return (
-      <div className="container">
-        <div className="features-grid">
-          <div className="feature-card">
-            <h3>Your Data</h3>
-            <p>View your personalized listening stats on Unwrapped.</p>
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="feature-card bg-[#0e0e0e] rounded-lg flex flex-col items-center text-center transition-all duration-300 hover:shadow-[0_0_35px_#1DB954]">
+            <h3 className="text-xl font-semibold mb-3">Your Data</h3>
+            <p className="text-gray-400">View your personalized listening stats on Unwrapped.</p>
           </div>
-          <div className="feature-card">
-            <h3>Compare With Friends</h3>
-            <p>See how your music taste matches up with friends.</p>
+          <div className="feature-card bg-[#0e0e0e] rounded-lg flex flex-col items-center text-center transition-all duration-300 hover:shadow-[0_0_35px_#1DB954]">
+            <h3 className="text-xl font-semibold mb-3">Compare With Friends</h3>
+            <p className="text-gray-400">See how your music taste matches up with friends.</p>
           </div>
-          <div className="feature-card">
-            <h3>Time Comparisons</h3>
-            <p>Track how your listening habits evolve over time.</p>
+          <div className="feature-card bg-[#0e0e0e] rounded-lg flex flex-col items-center text-center transition-all duration-300 hover:shadow-[0_0_35px_#1DB954]">
+            <h3 className="text-xl font-semibold mb-3">Time Comparisons</h3>
+            <p className="text-gray-400">Track how your listening habits evolve over time.</p>
           </div>
         </div>
       </div>

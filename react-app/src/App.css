@@ -1,3 +1,6 @@
+/* Importing Tailwind CSS */
+@import "tailwindcss";
+
 /* Base and Root */
 * {
   margin: 0;
@@ -34,7 +37,6 @@
 
 .header,
 .hero,
-.features,
 .footer,
 .stats-section {
   background-color: var(--spotify-black); 
@@ -56,13 +58,23 @@ a {
   text-decoration: none;
 }
 
+.hero-spacing {
+  padding: 0.5rem;
+  margin: 1rem;
+}
 
 .container {
-  cursor: default;
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem; 
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: -5rem; 
 }
 
 body{
@@ -224,31 +236,6 @@ background: black;
 }
 
 /* Hero Section */
-.hero {
-  position: relative;
-  padding: 6rem 0 1rem; 
-  display: flex;
-  align-items: center;
-  min-height: 75vh;
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 48rem;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  letter-spacing: -1px;
-}
-
 .accent {
   color: var(--spotify-green);
   text-shadow: 0 0 2px var(--spotify-green), 0 0 2px var(--spotify-green), 0 0 24px var(--spotify-green);
@@ -259,56 +246,7 @@ background: black;
   text-shadow: 0 0 2px var(--spotify-green), 0 0 2px var(--spotify-green), 0 0 24px var(--spotify-green);
 }
 
-.hero-description {
-  font-size: 1.25rem;
-  color: var(--spotify-lightgray);
-  margin-bottom: 2.5rem;
-  max-width: 36rem;
-}
 
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-/* Features Section */
-.features {
-  margin: 8rem 0 0 0; 
-  padding-bottom: 7rem; 
-  background-color: var(--spotify-black);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.feature-card {
-  background-color: #0e0e0e;
-  border-radius: var(--radius);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: var(--transition);
-}
-
-.feature-card:hover {
-  box-shadow: 0 0 35px var(--spotify-green);
-}
-
-.feature-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-
-.feature-card p {
-  color: var(--spotify-lightgray);
-}
 
 /* Footer Styles */
 .footer {
@@ -572,10 +510,6 @@ background: black;
       font-size: 2.5rem;
   }
   
-  .feature-card {
-      padding: 1.5rem;
-  }
-  
   .friend-selector {
       flex-wrap: wrap;
   }
@@ -604,3 +538,8 @@ background: black;
   }
 
 }
+
+.feature-card {
+  padding: 1.5rem;
+}
+
