@@ -45,7 +45,7 @@ function Index() {
         <div className='container header-container'>
           <div className='logo'><span className='accent'>Unwrapped</span></div>
           {profileName ? (
-            <div className="header-greeting">
+            <div className="text-2xl font-bold text-white flex items-center gap-2">
               <span>Hello, </span>
               <span> {profileName}</span>
             </div>
@@ -73,10 +73,10 @@ function Index() {
     return (
       <section className="hero bg-black flex items-center justify-center min-h-[75vh]">
         <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-6xl font-extrabold leading-tight tracking-tight mb-12">
+          <h1 className="text-6xl font-extrabold leading-tight tracking-tight mb-8">
             <span>Your Music,</span> <span className="accent">Right Here</span>
           </h1>
-          <p className="text-lg text-gray-400 mb-16 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
             Discover your listening habits and compare with friends. See your top tracks, artists, and genres, all in one place.
           </p>
           <a
