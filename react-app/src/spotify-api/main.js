@@ -43,6 +43,7 @@ code in the URL it uses to to get an access token from token.js
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     if (code && sessionStorage.getItem('codeUsed') === "false") {
+      sessionStorage.setItem('loading', "true");
       sessionStorage.setItem('codeUsed', true);
       const accessToken = await getToken(code); //From token.js
       if (accessToken) {
@@ -78,6 +79,7 @@ code in the URL it uses to to get an access token from token.js
         if (error) {
           console.error("Error updating profile:", error);
         }
+        sessionStorage.setItem('loading', "false");
         // FETCH FUNCTIONS FROM fetch.js //
         // const currentTrack = await fetchCurrentTrack(accessToken);
         // const topTrackList = await fetchTopTracks(accessToken, 20, "long_term"); 
