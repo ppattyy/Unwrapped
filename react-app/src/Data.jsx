@@ -26,12 +26,12 @@ function Header() {
 function StatsHeader() {
     return (
         <div className="stats-header">
-              <h1>Your <span className="stats accent">Listening Stats</span></h1>
+              <h1 className='font-extrabold text-5xl mb-4'>Your <span className="stats accent">Listening Stats</span></h1>
               <p>Based on your Spotify activity over the last...</p>
               <div className="duration">
-                <button className="stats-length">4 Weeks</button>
-                <button className="stats-length">6 Months</button>
-                <button className="stats-length active">2024</button>
+                <button className="stats-length mx-1">4 Weeks</button>
+                <button className="stats-length mx-1">6 Months</button>
+                <button className="stats-length active mx-1">2024</button>
               </div>
         </div>
     );
@@ -126,11 +126,10 @@ function FriendsContainer() {
 function FriendsStats() {
     return (
         <div className="stats-header">
-            <h2><span className="accent">Your Friends' Stats</span></h2>
-            <p>Check out what your friends have been listening to</p>
-            <div className="duration">
-                <button className="stats-length-friends">4 Weeks</button>
-                <button className="stats-length-friends">6 Months</button>
+            <h2><span className="accent text-4xl font-bold">Your Friends' Stats</span></h2>
+            <div className="mt-4 mb-4">
+                <button className="stats-length-friends mx-1">4 Weeks</button>
+                <button className="stats-length-friends mx-1">6 Months</button>
                 <button className="stats-length-friends active">2024</button>
             </div>
         </div>
