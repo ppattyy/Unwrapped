@@ -24,6 +24,9 @@ body {
 
 .c-bOcPnF-cmFMMs-color-primary{
     background-color: var(--spotify-green) !important;
+    color: var(--spotify-black) !important;
+    max-width: 100px;
+    margin: 0 auto;
 }
 
 .login-container{
