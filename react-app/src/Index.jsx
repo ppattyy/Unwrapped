@@ -4,6 +4,16 @@ import { useState, useEffect } from 'react';
 
 function Index() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isLoading, setIsLoading] = useState(sessionStorage.getItem("loading") === "true");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const current = sessionStorage.getItem("loading") === "true";
+      setIsLoading(current);
+    }, 250); // poll every 250ms
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,19 +125,29 @@ function Index() {
   }
   return (
     <div id="root">
-      <Header />
-      <main>
-        <section className="hero">
-          <Hero />
-        </section>
-        <ScrollIndicator />
-        <section id="features" className="features">
-          <Features />
-        </section>
-      </main>
-      <Footer />
-    </div>
-  );
+      {isLoading ? (
+        <div className="loading-overlay">
+          <div className="loading-content">
+            <p>Loading your Spotify data…</p>
+          </div>
+        </div>
+      ) : (
+        <>
+        <Header />
+        <main>
+          <section className="hero">
+            <Hero />
+          </section>
+          <ScrollIndicator />
+          <section id="features" className="features">
+            <Features />
+          </section>
+        </main>
+        <Footer />
+        </>
+      )}
+      </div>
+  );  
 }
 
 export default Index;
