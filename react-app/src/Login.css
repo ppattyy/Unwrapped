@@ -11,7 +11,7 @@ body {
     background-color: var(--spotify-black);
 }
 
-h1 {
+.headerSignIn {
     color: var(--spotify-lightgray);
     font-size: 2.5rem;
     margin-bottom: 1rem;

@@ -70,7 +70,7 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: -5rem;
+  margin-top: -3rem;
 }
 
 body{
@@ -273,7 +273,7 @@ background: black;
   margin-bottom: 2rem; 
 }
 
-.stats-header h1 {
+.headerStats {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 0.75rem;
@@ -502,9 +502,6 @@ background: black;
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-      font-size: 2.5rem;
-  }
   
   .friend-selector {
       flex-wrap: wrap;
@@ -520,15 +517,12 @@ background: black;
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-      font-size: 2rem;
-  }
   
   .hero-description {
       font-size: 1rem;
   }
   
-  .stats-header h1 {
+  .headerStats {
       font-size: 2rem;
     
   }
