@@ -62,6 +62,7 @@ code in the URL it uses to to get an access token from token.js
   
         const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
         if (sessionError || !sessionData.session) {
+          console.log(sessionData)
           console.error("No session found:", sessionError);
           sessionStorage.setItem('loading', "false");
           return;
