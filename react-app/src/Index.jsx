@@ -110,7 +110,6 @@ function Index() {
       </footer>
     );
   }
-
   return (
     <div id="root">
       <Header />
