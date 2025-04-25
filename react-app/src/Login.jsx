@@ -58,8 +58,7 @@ const Login = () => {
     return (
       <>
         <div className="login-container">
-        <h1><span className='accent text-5xl font-bold'>Unwrapped</span></h1>
-        <h1 className="mt-12 font-extrabold">Sign {title || "in"}</h1>
+        <h1 className="mb-10"><span className='accent text-5xl font-extrabold'>Unwrapped</span></h1>
         <Auth
           supabaseClient={supabase}
           appearance={{ theme: ThemeSupa }}
