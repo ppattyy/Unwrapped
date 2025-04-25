@@ -163,6 +163,7 @@ background: black;
 .btn-primary {
   background-color: var(--spotify-green);
   color: black;
+  font-size: 1.25rem;
 }
 
 /* Header Styles */

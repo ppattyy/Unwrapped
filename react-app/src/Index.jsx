@@ -76,7 +76,7 @@ function Index() {
           <h1 className="text-7xl font-extrabold leading-tight tracking-tight mb-8">
             <span>Your Music,</span> <span className="accent">Right Here</span>
           </h1>
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 mb-8 max-w-xl mx-auto">
             Discover your listening habits and compare with friends. See your top tracks, artists, and genres, all in one place.
           </p>
           <a
