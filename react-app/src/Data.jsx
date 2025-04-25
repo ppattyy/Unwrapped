@@ -16,7 +16,7 @@ function Header() {
         <header className='header'>
           <div className='container header-container'>
             <div className='logo'>
-              <Link to="/home" className='accent'>Unwrapped</Link>
+              <Link to="/home" className='accent font-extrabold'>Unwrapped</Link>
             </div>
           </div>
         </header>
@@ -287,7 +287,7 @@ function Footer() {
       <footer id="about" className="footer">
         <div className="container">
           <div className="footer-content">
-            <div className="logo"><span className="accent">Unwrapped</span></div>
+            <div className="logo"><span className="accent font-extrabold">Unwrapped</span></div>
             <p className="copyright">&copy; <span id="current-year">2025</span> Unwrapped. Not affiliated with Spotify.</p>          
           </div>
         </div>

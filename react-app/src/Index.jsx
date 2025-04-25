@@ -43,7 +43,7 @@ function Index() {
     return (
       <header className='header'>
         <div className='container header-container'>
-          <div className='logo'><span className='accent'>Unwrapped</span></div>
+          <div className='logo'><span className='accent font-extrabold'>Unwrapped</span></div>
           {profileName ? (
             <div className="text-2xl font-bold text-white flex items-center gap-2">
               <span>Hello, </span>
@@ -116,7 +116,7 @@ function Index() {
       <footer id="about" className="footer">
         <div className="container">
           <div className="footer-content">
-            <div className="logo"><span className="accent">Unwrapped</span></div>
+            <div className="logo"><span className="accent font-extrabold">Unwrapped</span></div>
             <p className="copyright">&copy; <span id="current-year">2025</span> Unwrapped. Not affiliated with Spotify.</p>          
           </div>
         </div>
