@@ -43,7 +43,7 @@ function Index() {
     return (
       <header className='header'>
         <div className='container header-container'>
-          <div className='logo'><span className='accent'>Unwrapped</span></div>
+          <div className='logo'><span className='accent font-extrabold'>Unwrapped</span></div>
           {profileName ? (
             <div className="text-2xl font-bold text-white flex items-center gap-2">
               <span>Hello, </span>
@@ -76,7 +76,7 @@ function Index() {
           <h1 className="text-7xl font-extrabold leading-tight tracking-tight mb-8">
             <span>Your Music,</span> <span className="accent">Right Here</span>
           </h1>
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 mb-8 max-w-xl mx-auto">
             Discover your listening habits and compare with friends. See your top tracks, artists, and genres, all in one place.
           </p>
           <a
@@ -116,7 +116,7 @@ function Index() {
       <footer id="about" className="footer">
         <div className="container">
           <div className="footer-content">
-            <div className="logo"><span className="accent">Unwrapped</span></div>
+            <div className="logo"><span className="accent font-extrabold">Unwrapped</span></div>
             <p className="copyright">&copy; <span id="current-year">2025</span> Unwrapped. Not affiliated with Spotify.</p>          
           </div>
         </div>
