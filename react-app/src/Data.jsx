@@ -141,7 +141,6 @@ function FriendSelector() {
         <div className="friend-selector">
             <button className="friend-tab active" data-friend="nathan">Nathan</button>
             <button className="friend-tab" data-friend="patrick">Patrick</button>
-            <button className="friend-tab" data-friend="patrick">Elijah</button>
         </div>
     );
 }
@@ -443,17 +442,6 @@ function Data() {
                     )}
                     </div>
                     <div className="friends-stats hidden" data-friend="patrick">
-                    {friendLoading ? (
-                    <div>Loading your stats...</div>
-                    ) : (
-                    <div className="stats-grid">
-                        <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
-                        <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
-                        <FriendGenre />
-                    </div>
-                    )}
-                    </div>
-                    <div className="friends-stats hidden" data-friend="elijah">
                     {friendLoading ? (
                     <div>Loading your stats...</div>
                     ) : (
