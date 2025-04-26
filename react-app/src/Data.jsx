@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { createClient } from "@supabase/supabase-js";
 import { Link } from 'react-router-dom';
 import mockTopArtists from './mockdata/mockTopArtists.json';
+import ScrollReveal from 'scrollreveal';
 
 const supabase = createClient("https://ohvjoekcangwhrpwqcpw.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9odmpvZWtjYW5nd2hycHdxY3B3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMxOTE0NzcsImV4cCI6MjA1ODc2NzQ3N30.NSkMSsN3lH0Bmgu6kuCinn0B7kY0L460D3Af142CEzc");
 
@@ -38,6 +39,35 @@ function StatsHeader() {
 }
 
 function StatsTracks({currDuration, profile}) {
+
+    useEffect(() => {
+        ScrollReveal().reveal('.tracks', {
+            duration: 5000,
+            origin: 'bottom',
+            distance: '30px',
+            easing: 'ease-in-out',
+            reset: true,
+        });
+
+        ScrollReveal().reveal('.artist', {
+            duration: 5000,
+            origin: 'bottom',
+            delay: 200,
+            distance: '30px',
+            easing: 'ease-in-out',
+            reset: true,
+        });
+
+        ScrollReveal().reveal('.genre', {
+            duration: 5000,
+            origin: 'bottom',
+            delay: 400,
+            distance: '30px',
+            easing: 'ease-in-out',
+            reset: true,
+        });
+        }, []); 
+
     const [topTracks, setTopTracks] = useState([]); 
     useEffect(() => {
         getTopTracks();
@@ -141,6 +171,7 @@ function FriendSelector() {
         <div className="friend-selector">
             <button className="friend-tab active" data-friend="nathan">Nathan</button>
             <button className="friend-tab" data-friend="patrick">Patrick</button>
+            <button className="friend-tab" data-friend="patrick">Elijah</button>
         </div>
     );
 }
@@ -442,6 +473,17 @@ function Data() {
                     )}
                     </div>
                     <div className="friends-stats hidden" data-friend="patrick">
+                    {friendLoading ? (
+                    <div>Loading your stats...</div>
+                    ) : (
+                    <div className="stats-grid">
+                        <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
+                        <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
+                        <FriendGenre />
+                    </div>
+                    )}
+                    </div>
+                    <div className="friends-stats hidden" data-friend="elijah">
                     {friendLoading ? (
                     <div>Loading your stats...</div>
                     ) : (
