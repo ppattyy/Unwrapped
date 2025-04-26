@@ -7,7 +7,7 @@
 export const getToken = async (code) => {
     const codeVerifier = localStorage.getItem('code_verifier');
     const clientId = 'd20e9e734bfb4d128096bb863a075dac'; 
-    const redirectUri = 'http://localhost:5173/home'; // Should match a valid redirect URI for the app
+    const redirectUri = 'https://unwrappedmi.netlify.app/home'; // Should match a valid redirect URI for the app
   
     const url = "https://accounts.spotify.com/api/token";
     const payload = {

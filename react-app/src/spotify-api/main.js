@@ -16,7 +16,7 @@ export const startAuthFlow = async () => {
     const codeChallenge = await generateCodeChallenge(codeVerifier); //From auth.js
   
     const clientId = 'd20e9e734bfb4d128096bb863a075dac';
-    const redirectUri = 'http://localhost:5173/home';  // Should match a valid redirect URI for the app
+    const redirectUri = 'https://unwrappedmi.netlify.app/home';  // Should match a valid redirect URI for the app
     const scope = 'user-read-private user-read-email user-read-recently-played user-top-read'; // Requesting these permissions. Read more: https://developer.spotify.com/documentation/web-api/concepts/scopes
   
     const authUrl = new URL("https://accounts.spotify.com/authorize");
