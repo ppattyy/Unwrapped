@@ -294,13 +294,6 @@ background: black;
   text-align: center;
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
 .stats-card {
   background-color: var(--spotify-black);
   border-radius: var(--radius);

@@ -242,7 +242,7 @@ function FriendGenre() {
             <div className="genre-list">
                 {genreBar.map((percentage, i) => (
                     <div className="genre-item" key={i}>
-                        <div className="genre-label">Genre</div>
+                        <div className="genre-label"></div>
                         <div className="genre-bar">
                             <div className="genre-fill" style={{width: `${percentage}%`}}></div>
                         </div> 
@@ -273,50 +273,47 @@ function Data() {
     const [friendLoading, setFriendLoading] = useState(true);
     const [profile, setProfile] = useState({});
     const [friendProfiles, setFriendProfiles] = useState([]);
-    
+
     async function getProfile() {
         const { data } = await supabase
             .from("profiles").select()
             .eq("id", user.id);
             
-            if (data?.length) {
-                setProfile(data[0]);
-              }
-              setLoading(false);
-      }
-      
-      async function getFriendProfile(id) {
+        if (data?.length) {
+            setProfile(data[0]);
+        }
+        setLoading(false);
+    }
+
+    async function getFriendProfile(id) {
         const { data } = await supabase
             .from("profiles").select()
             .eq("id", id);
             
-            if (data?.length) {
-                setFriendProfiles(prev => [...prev, data[0]]);
+        if (data?.length) {
+            setFriendProfiles(prev => [...prev, data[0]]);
+        }
+    }
+
+    useEffect(() => {
+        const fetchFriends = async () => {
+            const friendIDs = ["02516fc7-411a-4330-b7b3-cabe0477a657", "2b99dc44-ca4b-4f2b-b4d2-8a22baa320a6"];
+            for (let i = 0; i < friendIDs.length; i++) {
+                await getFriendProfile(friendIDs[i]);
             }
-      }
+            setFriendLoading(false);
+        };
 
-        useEffect(() => {
-            const fetchFriends = async () => {
-                const friendIDs = ["02516fc7-411a-4330-b7b3-cabe0477a657", "2b99dc44-ca4b-4f2b-b4d2-8a22baa320a6"] // Get specific friend profiles. This is a hardcoded solution.        
-                for (let i = 0; i < friendIDs.length; i++) {
-                    await getFriendProfile(friendIDs[i]);
-                }
-                setFriendLoading(false);
-            };
+        getProfile();    
+        fetchFriends();
 
-            // Get the profile data from Supabase
-            getProfile();    
-            fetchFriends();
-
-            // Set the current year in footer
-            const currentYear = document.getElementById("current-year");
-            if (currentYear) {
+        const currentYear = document.getElementById("current-year");
+        if (currentYear) {
             currentYear.textContent = new Date().getFullYear();
-            }
+        }
 
-            // Toggle friends section visibility
-            const viewFriendsBtn = document.getElementById("view-friends-btn");
-            if (viewFriendsBtn) {
+        const viewFriendsBtn = document.getElementById("view-friends-btn");
+        if (viewFriendsBtn) {
             viewFriendsBtn.addEventListener("click", () => {
                 const friendsSection = document.getElementById("friends-stats");
                 if (!friendsSection) return;
@@ -324,43 +321,39 @@ function Data() {
                 friendsSection.classList.remove("hidden");
                 friendsSection.scrollIntoView({ behavior: "smooth" });
 
-                // Friend Tabs
                 const friendTabs = friendsSection.querySelectorAll(".friend-tab");
                 const friendStats = friendsSection.querySelectorAll(".friends-stats");
 
                 friendTabs.forEach((tab) => {
-                tab.addEventListener("click", () => {
-                    friendTabs.forEach((t) => t.classList.remove("active"));
-                    tab.classList.add("active");
-                    friendStats.forEach((stat) => stat.classList.add("hidden"));
-                    const friendId = tab.getAttribute("data-friend");
-                    const target = friendsSection.querySelector(`.friends-stats[data-friend="${friendId}"]`);
-                    if (target) target.classList.remove("hidden");
-                });
+                    tab.addEventListener("click", () => {
+                        friendTabs.forEach((t) => t.classList.remove("active"));
+                        tab.classList.add("active");
+                        friendStats.forEach((stat) => stat.classList.add("hidden"));
+                        const friendId = tab.getAttribute("data-friend");
+                        const target = friendsSection.querySelector(`.friends-stats[data-friend="${friendId}"]`);
+                        if (target) target.classList.remove("hidden");
+                    });
                 });
 
-                // Duration Tabs for Friends
                 const durationTabsFriends = friendsSection.querySelectorAll(".stats-length-friends");
                 durationTabsFriends.forEach((tab) => {
-                tab.addEventListener("click", () => {
-                    durationTabsFriends.forEach((t) => t.classList.remove("active"));
-                    tab.classList.add("active");
-                    if (tab.innerText === "4 Weeks") {
-                        setCurrDurationFriend("short_term");
-                    } else if (tab.innerText === "6 Months") {
-                        setCurrDurationFriend("medium_term");
-                    } else {
-                        setCurrDurationFriend("long_term");
-                    }
-                });
+                    tab.addEventListener("click", () => {
+                        durationTabsFriends.forEach((t) => t.classList.remove("active"));
+                        tab.classList.add("active");
+                        if (tab.innerText === "4 Weeks") {
+                            setCurrDurationFriend("short_term");
+                        } else if (tab.innerText === "6 Months") {
+                            setCurrDurationFriend("medium_term");
+                        } else {
+                            setCurrDurationFriend("long_term");
+                        }
+                    });
                 });
             });
-            }
+        }
 
-
-            // Duration tabs for your stats (main section)
-            const durationTabs = document.querySelectorAll(".stats-length");
-            durationTabs.forEach((tab) => {
+        const durationTabs = document.querySelectorAll(".stats-length");
+        durationTabs.forEach((tab) => {
             tab.addEventListener("click", () => {
                 durationTabs.forEach((t) => t.classList.remove("active"));
                 tab.classList.add("active");
@@ -372,10 +365,8 @@ function Data() {
                     setCurrDuration("long_term");
                 }
             });
-            });
-
-        }, []);
-        
+        });
+    }, []);
 
     return (
       <>
@@ -387,41 +378,38 @@ function Data() {
                 <StatsHeader />
                 {loading ? (
                     <div>Loading your stats...</div>
-                    ) : (
-                    <div className="stats-grid">
+                ) : (
+                    <div className="flex justify-center gap-8">
                         <StatsTracks currDuration={currDuration} profile={profile} />
                         <StatsArtists currDuration={currDuration} profile={profile} />
-                        <StatsGenre />
                     </div>
-                    )}
+                )}
                 <FriendsContainer />
               </div>
             </section>
             <section id="features" className="features"></section>
-                <section id="friends-stats" className="friends-section hidden">
+            <section id="friends-stats" className="friends-section hidden">
                 <div className="container">
                     <FriendsStats />
                     <FriendSelector />
                     <div className="friends-stats" data-friend="nathan">
                     {friendLoading ? (
-                    <div>Loading your stats...</div>
+                        <div>Loading your stats...</div>
                     ) : (
-                    <div className="stats-grid">
-                        <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
-                        <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
-                        <FriendGenre />
-                    </div>
+                        <div className="flex justify-center gap-8">
+                            <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
+                            <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[0]} />
+                        </div>
                     )}
                     </div>
                     <div className="friends-stats hidden" data-friend="patrick">
                     {friendLoading ? (
-                    <div>Loading your stats...</div>
+                        <div>Loading your stats...</div>
                     ) : (
-                    <div className="stats-grid">
-                        <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
-                        <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
-                        <FriendGenre />
-                    </div>
+                        <div className="flex justify-center gap-8">
+                            <FriendTracks currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
+                            <FriendArtists currDurationFriend={currDurationFriend} profile={friendProfiles[1]} />
+                        </div>
                     )}
                     </div>
                     <div className="return-button-container">
@@ -430,11 +418,10 @@ function Data() {
                 </div>
             </section>
           </main>
-            <Footer />
+          <Footer />
         </div>
-  
       </>
-    )
+    );
   }
   
   export default Data;
